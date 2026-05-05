@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Yazan Iwaina — Multimedia Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#090912;color:#ede8ff;font-family:'Syne',sans-serif;font-size:14px;line-height:1.7;overflow-x:hidden}
+:root{--v:#7c3aed;--vl:#a78bfa;--vm:#1e1438;--b:#2563eb;--m:#8b87b0;--bdr:rgba(124,58,237,0.2);--deep:#0d0d1f}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(9,9,18,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr)}
+.nlogo{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:#ede8ff;letter-spacing:.04em;text-decoration:none}
+.nlogo span{color:var(--vl)}
+.nlinks{display:flex;gap:2rem;list-style:none}
+.nlinks a{color:var(--m);text-decoration:none;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+.nlinks a:hover{color:var(--vl)}
+.hero{padding:4.5rem 2rem 3.5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--bdr)}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 75% 50%,rgba(124,58,237,.14) 0%,transparent 70%),radial-gradient(ellipse 35% 50% at 10% 80%,rgba(37,99,235,.09) 0%,transparent 60%);pointer-events:none}
+
+
+
+
+
+
+
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.15);border:1px solid var(--bdr);color:var(--vl);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;margin-bottom:1.5rem}
+.dot{width:6px;height:6px;background:var(--vl);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-name{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:.95;color:#ede8ff;margin-bottom:.3rem;letter-spacing:-.01em}
+.hero-name em{font-style:normal;color:var(--vl);display:block}
+.hero-sub{font-size:clamp(.8rem,1.4vw,1rem);color:var(--m);margin-bottom:1.8rem;font-weight:400;max-width:420px}
+.hero-quote{font-family:'Syne',sans-serif;font-size:clamp(.9rem,1.4vw,1.05rem);font-weight:400;color:#c4b8f0;background:rgba(124,58,237,.1);border-left:2px solid var(--vl);padding:.8rem 1.2rem;border-radius:0 8px 8px 0;max-width:420px;margin-bottom:2rem;line-height:1.6;font-style:italic}
+.stats{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem}
+.stat{background:rgba(124,58,237,.1);border:1px solid var(--bdr);border-radius:12px;padding:.7rem 1rem;min-width:85px}
+.stat-n{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--vl);line-height:1}
+.stat-l{font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--m);margin-top:.2rem}
+.hero-desc{font-size:.78rem;color:var(--m);max-width:420px;line-height:1.95}
+.gline{height:1px;background:linear-gradient(to right,transparent,var(--v),transparent)}
+section{padding:3.5rem 2rem}
+.slabel{font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--vl);font-weight:600;margin-bottom:.6rem}
+.stitle{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;color:#ede8ff;line-height:1.1;margin-bottom:.8rem;letter-spacing:-.01em}
+.stitle em{font-style:normal;color:var(--vl)}
+.sdiv{width:36px;height:3px;background:linear-gradient(to right,var(--v),var(--b));border-radius:2px;margin-bottom:2rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.about-p{font-size:.8rem;color:var(--m);line-height:2;margin-bottom:.9rem}
+.about-p strong{color:#ede8ff;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
+.tag{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .72rem;background:rgba(124,58,237,.12);color:var(--vl);border-radius:100px;font-weight:500;border:1px solid var(--bdr)}
+.acards{display:flex;flex-direction:column;gap:.6rem}
+.acard{background:rgba(124,58,237,.06);border:1px solid var(--bdr);border-radius:12px;padding:.9rem 1.1rem;border-left:3px solid var(--vl);transition:all .25s}
+.acard:hover{background:rgba(124,58,237,.13);border-left-color:var(--b)}
+.acard-l{font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--m);margin-bottom:.2rem}
+.acard-v{font-family:'Syne',sans-serif;font-size:1rem;font-weight:600;color:#ede8ff}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--bdr)}
+.pcard{background:#090912;cursor:pointer;transition:all .35s cubic-bezier(.23,1,.32,1);display:flex;flex-direction:column}
+.pcard:hover{background:#0d0d1f;z-index:2;box-shadow:0 12px 40px rgba(124,58,237,.2)}
+.pthumb{height:200px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;background:#0d0d1f}
+.pthumb img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .4s,transform .5s}
+.pcard:hover .pthumb img{opacity:1;transform:scale(1.04)}
+.pthumb-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,18,.85) 0%,transparent 55%);pointer-events:none;z-index:1}
+.play-btn{position:absolute;z-index:2;width:44px;height:44px;background:rgba(124,58,237,.8);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;opacity:0;transition:opacity .3s;backdrop-filter:blur(4px);border:1px solid rgba(167,139,250,.4)}
+.pcard:hover .play-btn{opacity:1}
+.pbadge{position:absolute;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .6rem;border-radius:100px;font-weight:600;z-index:3}
+.pbadge-t{top:.7rem;left:.7rem;background:rgba(9,9,18,.85);border:1px solid var(--bdr);color:var(--vl)}
+.pbadge-o{top:.7rem;right:.7rem;background:rgba(124,58,237,.5);color:#ede8ff}
+.pbody{padding:1.2rem;flex:1;display:flex;flex-direction:column}
+.ptitle{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#ede8ff;margin-bottom:.5rem;line-height:1.3;transition:color .2s}
+.pcard:hover .ptitle{color:var(--vl)}
+.pdesc{font-size:.72rem;color:var(--m);line-height:1.85;flex:1;margin-bottom:.9rem}
+.pfooter{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bdr);padding-top:.7rem;margin-top:auto}
+.porg{font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--vl);font-weight:500}
+.pyear{font-size:.58rem;color:var(--m)}
+.parrow{width:24px;height:24px;background:rgba(124,58,237,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--vl);transition:all .2s}
+.pcard:hover .parrow{background:var(--v);color:#fff}
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:1.5rem 0;border-bottom:1px solid var(--bdr)}
+.exp-item:first-child{padding-top:0}
+.exp-period{font-size:.6rem;color:var(--m);margin-bottom:.2rem}
+.exp-org{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--vl);font-weight:600}
+.exp-loc{font-size:.58rem;color:var(--m);font-style:italic;margin-top:.1rem}
+.exp-role{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#ede8ff;margin-bottom:.5rem;line-height:1.2}
+.exp-tasks{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.exp-tasks li{font-size:.72rem;color:var(--m);display:flex;gap:.6rem;align-items:baseline}
+.exp-tasks li::before{content:'→';color:var(--v);flex-shrink:0;font-size:.62rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.contact-big{font-family:'Syne',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.1;color:#ede8ff;margin-bottom:1rem}
+.contact-big em{font-style:normal;color:var(--vl)}
+.contact-note{font-size:.82rem;color:var(--m);line-height:1.9;max-width:300px;font-style:italic}
+.clinks{display:flex;flex-direction:column;gap:.6rem}
+.clink{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.1rem;background:rgba(124,58,237,.05);border:1px solid var(--bdr);border-radius:10px;text-decoration:none;color:#ede8ff;transition:all .25s}
+.clink:hover{background:rgba(124,58,237,.13);border-color:var(--vl);transform:translateX(4px)}
+.clink-l{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--m)}
+.clink-v{font-size:.78rem;font-weight:500;color:#ede8ff}
+.clink-arr{color:var(--vl);font-size:.75rem}
+footer{background:rgba(9,9,18,.95);border-top:1px solid var(--bdr);padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.flogo{font-family:'Syne',sans-serif;font-size:.95rem;color:var(--vl);font-weight:700}
+.fcopy{font-size:.58rem;color:var(--m);letter-spacing:.06em}
+.modal-wrap{display:none;position:fixed;inset:0;z-index:200;background:rgba(5,4,14,.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1.5rem}
+.modal-wrap.open{display:flex}
+.modal{background:#0d0d1f;border:1px solid var(--bdr);border-radius:16px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:mi .25s ease}
+.mclose{position:absolute;top:.8rem;right:.8rem;background:rgba(124,58,237,.12);border:1px solid var(--bdr);color:var(--m);cursor:pointer;width:30px;height:30px;border-radius:50%;font-size:.8rem;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit;z-index:5}
+.mclose:hover{background:var(--v);color:#fff;border-color:var(--v)}
+.myt{width:100%;aspect-ratio:16/9;border-radius:14px 14px 0 0;border:none;display:block}
+.mimg{width:100%;height:300px;object-fit:cover;border-radius:14px 14px 0 0;display:block}
+.mbody{padding:1.6rem}
+.mtype{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vl);font-weight:600;margin-bottom:.35rem}
+.mtitle{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:#ede8ff;line-height:1.2;margin-bottom:.8rem}
+.mrow{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.mbadge{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .65rem;border-radius:100px;background:rgba(124,58,237,.12);color:var(--vl);font-weight:500;border:1px solid var(--bdr)}
+.mbadge.hi{background:var(--v);color:#fff;border-color:var(--v)}
+.mdesc{font-size:.78rem;color:var(--m);line-height:2;white-space:pre-line}
+.mlink{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;margin-right:.5rem;padding:.45rem .9rem;background:rgba(124,58,237,.15);border:1px solid var(--bdr);border-radius:100px;color:var(--vl);text-decoration:none;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:all .2s}
+.mlink:hover{background:var(--v);color:#fff;border-color:var(--v)}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
+.ref-card{background:rgba(124,58,237,.06);border:1px solid var(--bdr);border-radius:14px;padding:1.4rem 1.6rem;border-left:3px solid var(--vl);transition:all .25s}
+.ref-card:hover{background:rgba(124,58,237,.12);border-left-color:var(--b)}
+.ref-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#ede8ff;margin-bottom:.3rem}
+.ref-title{font-size:.72rem;color:var(--m);line-height:1.6;margin-bottom:.3rem}
+.ref-org{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--vl);margin-bottom:.8rem}
+.ref-links{display:flex;flex-direction:column;gap:.3rem}
+.ref-link{font-size:.68rem;color:var(--vl);text-decoration:none;transition:color .2s}
+.ref-link:hover{color:#ede8ff}
+.ref-phone{font-size:.68rem;color:var(--m)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.reveal.vis{opacity:1;transform:none}
+@keyframes mi{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding-bottom:3.5rem}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr;gap:.5rem}
+  .pgrid{grid-template-columns:1fr}
+  .nlinks{gap:1rem}
+  nav{padding:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nlogo">Y<span>.</span>Iwaina</a>
+  <ul class="nlinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero" id="home">
+  <div class="hbg"></div>
+  <div class="eyebrow"><span class="dot"></span> Multimedia Creator · Palestine</div>
+    <h1 class="hero-name">Yazan<em>Iwaina</em></h1>
+    <p class="hero-sub">Specializing in Social Impact, Brand Content &amp; Storytelling</p>
+    <blockquote class="hero-quote">"Every frame is a witness. Every sound is a story."</blockquote>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Videos</div></div>
+      <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Campaigns</div></div>
+      <div class="stat"><div class="stat-n">100K+</div><div class="stat-l">Views</div></div>
+      <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Organizations</div></div>
+    </div>
+  <p class="hero-desc">I create high-impact video, photography and digital content that helps brands, organizations and communities tell stories that move people.</p>
+</div>
+
+<div class="gline"></div>
+
+<section id="about">
+  <div class="slabel">Who I Am</div>
+  <h2 class="stitle reveal">Story Behind <em>the Lens</em></h2>
+  <div class="sdiv"></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="about-p">I'm a <strong>Palestinian multimedia creator</strong> focused on impactful storytelling through film, photography and digital media. My work documents identity, culture and human stories through cinematic visuals.</p>
+      <p class="about-p">I combine creative direction with technical execution to produce content that connects emotionally and performs digitally — from brand campaigns to immersive VR experiences.</p>
+      <div class="tags">
+        <span class="tag">Video Production</span>
+        <span class="tag">Photography</span>
+        <span class="tag">Documentaries</span>
+        <span class="tag">Podcast</span>
+        <span class="tag">VR · 360°</span>
+        <span class="tag">Brand Content</span>
+        <span class="tag">Social Media</span>
+        <span class="tag">Creative Direction</span>
+      </div>
+    </div>
+    <div class="acards reveal">
+      <div class="acard"><div class="acard-l">Based In</div><div class="acard-v">Palestine</div></div>
+      <div class="acard"><div class="acard-l">Focus</div><div class="acard-v">Social Impact · Human Stories</div></div>
+      <div class="acard"><div class="acard-l">Approach</div><div class="acard-v">Cinematic · Intentional · Raw</div></div>
+      <div class="acard"><div class="acard-l">Organizations</div><div class="acard-v">5+ Across 2 Continents</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="gline"></div>
+
+<section id="work" style="background:var(--deep);padding-left:0;padding-right:0;padding-top:3.5rem">
+  <div style="padding:0 2rem">
+    <div class="slabel">Selected Projects</div>
+    <h2 class="stitle reveal"><em>Selected</em> Work</h2>
+    <div class="sdiv"></div>
+  </div>
+  <div class="pgrid">
+
+    <div class="pcard reveal" onclick="openM(0)">
+      <div class="pthumb">
+        <img src="images/bawh.png" alt="Bawh Podcast">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">→</div>
+        <span class="pbadge pbadge-t">Podcast</span>
+        <span class="pbadge pbadge-o">Al Quds-Bard</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">Bawh بوح — A Palestinian Podcast</h3>
+        <p class="pdesc">A storytelling podcast tapping into the transformative power of everyday people and their life stories. Every week, tuning into Palestine in all its shapes, sizes, sounds and textures.</p>
+        <div class="pfooter"><span class="porg">Al Quds-Bard College</span><span class="pyear">Ongoing</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" onclick="openM(1)">
+      <div class="pthumb">
+        <img src="images/vr.png" alt="360 VR Journalism">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">▶</div>
+        <span class="pbadge pbadge-t">Virtual Reality</span>
+        <span class="pbadge pbadge-o">Public Diplomacy</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">360° Journalism — Voices from Palestine</h3>
+        <p class="pdesc">Immersive VR experiences featuring prominent journalists, placing international viewers inside Palestinian narratives through spatial media.</p>
+        <div class="pfooter"><span class="porg">Palestine Int'l Public Diplomacy</span><span class="pyear">2023</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" onclick="openM(2)">
+      <div class="pthumb">
+        <img src="images/ipomea.png" alt="IPOMEA FEST">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">▶</div>
+        <span class="pbadge pbadge-t">Event Coverage</span>
+        <span class="pbadge pbadge-o">Per Esempio · Italy</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">IPOMEA FEST — Event Documentation</h3>
+        <p class="pdesc">Documented and photographed IPOMEA FEST in Italy — capturing the energy, people and moments of the festival through photo and video.</p>
+        <div class="pfooter"><span class="porg">Per Esempio, Italy</span><span class="pyear">2022–2023</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" onclick="openM(3)">
+      <div class="pthumb">
+        <img src="images/resistance.png" alt="Stories of Resistance">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">▶</div>
+        <span class="pbadge pbadge-t">Documentary</span>
+        <span class="pbadge pbadge-o">Per Esempio · Balasan</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">Stories of Resistance — West Bank</h3>
+        <p class="pdesc">Documentary content capturing stories of resistance from the West Bank, in collaboration with Per Esempio and Balasan.</p>
+        <div class="pfooter"><span class="porg">Per Esempio · Balasan</span><span class="pyear">2025</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" onclick="openM(4)">
+      <div class="pthumb">
+        <img src="images/nicolasjaar.png" alt="Nicolas Jaar Workshop">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">▶</div>
+        <span class="pbadge pbadge-t">Event Documentation</span>
+        <span class="pbadge pbadge-o">Dar Jacir · Palestine</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">Nicolás Jaar — (un)building listenings 2</h3>
+        <p class="pdesc">Documented the second iteration of Nicolás Jaar's sound workshop for Palestinians at Dar Jacir, Bethlehem.</p>
+        <div class="pfooter"><span class="porg">Dar Jacir, Palestine</span><span class="pyear">May–June 2022</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" onclick="openM(5)">
+      <div class="pthumb">
+        <img src="images/unwanted-path.jpg" alt="The Unwanted Path">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">→</div>
+        <span class="pbadge pbadge-t">Independent Documentary</span>
+        <span class="pbadge pbadge-o">Independent</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">The Unwanted Path</h3>
+        <p class="pdesc">A personal film about Palestinian labor in Israel — told through the eyes of a father and his son, the filmmaker himself.</p>
+        <div class="pfooter"><span class="porg">Independent</span><span class="pyear">2023–2024</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+
+    <div class="pcard reveal" onclick="openM(6)">
+      <div class="pthumb">
+        <img src="images/musica.png" alt="A Musica Contro il Silenzi">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">▶</div>
+        <span class="pbadge pbadge-t">Documentary</span>
+        <span class="pbadge pbadge-o">Independent · Italy</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">A Musica Contro il Silenzi</h3>
+        <p class="pdesc">Documented a powerful protest in Palermo, Sicily — Music Against Silence — featuring orchestral performances and a large crowd standing in solidarity against the genocide in Gaza.</p>
+        <div class="pfooter"><span class="porg">Independent, Italy</span><span class="pyear">2024</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+    <div class="pcard reveal" onclick="openM(7)">
+      <div class="pthumb">
+        <img src="images/ardawa.png" alt="Ardawa">
+        <div class="pthumb-grad"></div>
+        <div class="play-btn">→</div>
+        <span class="pbadge pbadge-t">Documentary · Blog</span>
+        <span class="pbadge pbadge-o">Dar Jacir · Palestine</span>
+      </div>
+      <div class="pbody">
+        <h3 class="ptitle">Ardawa ءاود — Healing the Land</h3>
+        <p class="pdesc">Documented the healing process of a plot of land in Bethlehem — exposed to decades of grenades, fires and pollutants — and the journey to restore it through permaculture.</p>
+        <div class="pfooter"><span class="porg">Dar Jacir, Palestine</span><span class="pyear">Ongoing</span><div class="parrow">→</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gline"></div>
+
+<section id="experience">
+  <div class="slabel">Journey</div>
+  <h2 class="stitle reveal"><em>Experience</em> &amp; Collaborations</h2>
+  <div class="sdiv"></div>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div><div class="exp-period">2022 – 2023</div><div class="exp-org">Per Esempio</div><div class="exp-loc">Italy</div></div>
+      <div>
+        <div class="exp-role">Media Production Intern</div>
+        <ul class="exp-tasks">
+          <li>Documented and photographed IPOMEA FEST through photo and video</li>
+          <li>Produced Stories of Resistance — a documentary on the West Bank with Balasan</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div><div class="exp-period">2022 – 2024</div><div class="exp-org">Dar Jacir</div><div class="exp-loc">Palestine</div></div>
+      <div>
+        <div class="exp-role">Multimedia Creator</div>
+        <ul class="exp-tasks">
+          <li>Documented Nicolás Jaar's (un)building listenings 2 workshop series</li>
+          <li>Produced short-form video and photo content around cultural events</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div><div class="exp-period">2023</div><div class="exp-org">Palestine Int'l Public Diplomacy</div><div class="exp-loc">Palestine</div></div>
+      <div>
+        <div class="exp-role">VR Content Producer</div>
+        <ul class="exp-tasks">
+          <li>Created 360° VR videos featuring prominent Palestinian journalists</li>
+          <li>Managed full production pipeline from concept to delivery</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div><div class="exp-period">2023 – 2024</div><div class="exp-org">Al Quds-Bard College</div><div class="exp-loc">Palestine</div></div>
+      <div>
+        <div class="exp-role">Podcast Producer — Bawh بوح</div>
+        <ul class="exp-tasks">
+          <li>Produced and hosted a weekly storytelling podcast tuning into Palestinian voices</li>
+          <li>Managed audio production, editing and story development end-to-end</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gline"></div>
+
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="slabel">Get in Touch</div>
+      <h2 class="contact-big">Every story<br>deserves to be <em>told.</em></h2>
+      <p class="contact-note">"Silence is not neutral. Let's make noise together."</p>
+    </div>
+    <div class="clinks reveal">
+      <a href="mailto:yazan.ra.ow@gmail.com" class="clink">
+        <div><div class="clink-l">Email</div><div class="clink-v">yazan.ra.ow@gmail.com</div></div>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://instagram.com/yazan_owin" target="_blank" class="clink">
+        <div><div class="clink-l">Instagram</div><div class="clink-v">@yazan_owin</div></div>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/yazan-iwaina-b21a1731a/" target="_blank" class="clink">
+        <div><div class="clink-l">LinkedIn</div><div class="clink-v">Yazan Iwaina</div></div>
+        <span class="clink-arr">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="gline"></div>
+
+<section id="references" style="background:var(--deep)">
+  <div class="slabel">Endorsements</div>
+  <h2 class="stitle reveal"><em>References</em></h2>
+  <div class="sdiv"></div>
+  <div class="ref-grid reveal">
+
+    <div class="ref-card">
+      <div class="ref-name">Dr. Laura Menchaca Ruiz</div>
+      <div class="ref-title">Head, Digital Communications, Media &amp; the Arts Program</div>
+      <div class="ref-org">Al-Quds Bard College (AQB)</div>
+      <div class="ref-links">
+        <a href="mailto:lmenchaca@staff.alquds.edu" class="ref-link">lmenchaca@staff.alquds.edu</a>
+        <span class="ref-phone">+970 592 122 742</span>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-name">Emily Jacir</div>
+      <div class="ref-title">Co-Founder &amp; Founding Director</div>
+      <div class="ref-org">Dar Yusuf Nasri Jacir</div>
+      <div class="ref-links">
+        <a href="mailto:emily@darjacir.com" class="ref-link">emily@darjacir.com</a>
+        <span class="ref-phone">+39 334 252 7774</span>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-name">Alberta Buffa</div>
+      <div class="ref-title">Project Manager</div>
+      <div class="ref-org">Per Esempio Onlus, Palermo</div>
+      <div class="ref-links">
+        <a href="mailto:a.buffa@peresempionlus.org" class="ref-link">a.buffa@peresempionlus.org</a>
+        <span class="ref-phone">+39 392 194 0815</span>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-name">Inès Abdel Razek</div>
+      <div class="ref-title">Co-Director, Palestine Institute for Public Diplomacy (PIPD) &amp; Rabet</div>
+      <div class="ref-org">PIPD</div>
+      <div class="ref-links">
+        <a href="mailto:ines.abdelrazek@thepipd.com" class="ref-link">ines.abdelrazek@thepipd.com</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<footer>
+  <div class="flogo">Yazan Iwaina</div>
+  <div class="fcopy">© 2025 · Multimedia Creator · Palestine</div>
+</footer>
+
+<div class="modal-wrap" id="mWrap" onclick="closeMOut(event)">
+  <div class="modal" id="modal">
+    <button class="mclose" onclick="closeM()">✕</button>
+    <div id="mMedia"></div>
+    <div class="mbody">
+      <div class="mtype" id="mType"></div>
+      <h2 class="mtitle" id="mTitle"></h2>
+      <div class="mrow" id="mRow"></div>
+      <p class="mdesc" id="mDesc"></p>
+      <div id="mLinks"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const projects = [
+  {type:'Podcast · Audio Storytelling',title:'Bawh بوح — A Palestinian Podcast',org:'Al Quds-Bard College',year:'Ongoing',loc:'Palestine',yt:null,img:'images/bawh.png',links:[{label:'Visit Bawh',url:'https://bawh.org/'}],desc:'Bawh بوح taps into the transformative power of everyday people and their life stories. Every week, we tune into Palestine in all its shapes, sizes, sounds and textures.\n\nWe create stories that make people feel like they are not alone — that their experiences are reflected in the experiences of others. There is room for every kind of story, big or small, light or heavy. All stories are equally valuable.\n\nCuriosity, creativity and openness drives the story development process. Our stories are characterized by simplicity and clarity, although their subject matter may be complex.'},
+  {type:'Virtual Reality · 360° Film',title:'360° Journalism — Voices from Palestine',org:'Palestine International Public Diplomacy',year:'2023',loc:'Palestine',yt:'ZnF1ZTtM6Ls',img:null,links:[{label:'View Project',url:'https://www.thepipd.com/content/visit-palestine-vr/'}],desc:'Produced a series of immersive 360° virtual reality video experiences designed to place international audiences inside Palestinian narratives. The project featured prominent journalists and public figures from across Palestine, leveraging spatial media as a tool for diplomacy and empathy.'},
+  {type:'Event Coverage · Photography & Video',title:'IPOMEA FEST — Event Documentation',org:'Per Esempio',year:'2022–2023',loc:'Italy',yt:'UT7W2yXfuIM',img:null,links:[{label:'IPOMEA FEST',url:'https://www.ipomeafest.it/index-en.html'}],desc:'Documented IPOMEA FEST in Italy — a vibrant cultural event — through photography and videography. Captured the energy, the people, the performances and the behind-the-scenes moments, creating a visual archive of the festival for Per Esempio.'},
+  {type:'Documentary · Resistance',title:'Stories of Resistance — West Bank',org:'Per Esempio · Balasan',year:'2025',loc:'Palestine & Italy',yt:'x07gmUlUKpk',img:null,links:[{label:'View on Per Esempio',url:'https://peresempio.com/en/2025/08/06/stories-of-resistence-from-the-west-bank/'},{label:'Balasan',url:'https://balasan.org/'}],desc:'Produced documentary content capturing stories of resistance from the West Bank, in collaboration with Per Esempio (Italy) and Balasan. A powerful piece exploring resilience, identity and the everyday realities of life under occupation, told through intimate and cinematic storytelling. Shot across both Palestine and Italy.'},
+  {type:'Event Documentation · Sound & Music',title:'Nicolás Jaar — (un)building listenings 2',org:'Dar Jacir',year:'May–June 2022',loc:'Bethlehem, Palestine',yt:'MvXSf2EbgII',img:null,links:[],desc:'Documented the second iteration of Nicolás Jaar\'s (un)building listenings — a music and sound editing workshop tailored to Palestinians with little or no prior experience in music. Held weekly at Dar Jacir in Bethlehem, participants learned to make recordings, shape sound and tell sonic stories by layering frequencies.\n\nNicolás Jaar is one of the most acclaimed experimental musicians of his generation, spanning pop, ambient, noise and club music. The workshop provided all participants with Ableton Live software.'},
+  {type:'Independent Documentary',title:'The Unwanted Path',org:'Independent',year:'2023–2024',loc:'Palestine',yt:null,img:'images/unwanted-path.jpg',links:[],desc:'"The Unwanted Path" is a personal film that delves into the world of Palestinian labor in Israel through two distinct perspectives — a Palestinian father, Rashid, trying to make ends meet for his family, and his son (the filmmaker), who deeply disagrees with his father\'s choice.\n\nThe film follows Rashid as he navigates the physical and mental strains of laboring in Israel. Through the lens of his cellphone camera, we witness his daily struggles, resilience, and quiet determination. Alongside Rashid\'s story, we hear from his son Yazan — offering a unique insight into how his father\'s labor shapes their family dynamics and aspirations.\n\n"The Unwanted Path" goes beyond the headlines to present a nuanced understanding of Palestinian laborers in Israel — shedding light not just on the workers themselves, but on the broader implications for their families and communities.'},
+  {type:'Documentary · Protest',title:'A Musica Contro il Silenzi',org:'Independent',year:'2024',loc:'Palermo, Sicily — Italy',yt:'kza3CUJViOw',img:null,links:[],desc:'Documented a powerful protest concert in Palermo, Sicily — Music Against Silence (A Musica Contro il Silenzi) — a demonstration against the apartheid and genocide in Palestine.\n\nThe event featured full orchestral performances alongside a massive crowd gathering in solidarity. A cinematic documentation of art used as resistance — where music became the loudest form of protest.'},
+  {type:'Documentary · Land & Ecology',title:'Ardawa ءاود — Healing the Land',org:'Dar Jacir',year:'Ongoing',loc:'Bethlehem, Palestine',yt:null,img:'images/ardawa.png',links:[{label:'Visit Ardawa Blog',url:'https://ardawadarjacir.wordpress.com'}],desc:'What does this small piece of terrace at the edge of a street in Bethlehem now wish for? This was the spark for a new healing journey.\n\nArdawa is the exploration of the possibility of bringing to the land (Ard) the remediation (Dawaa\') for which it longs. A plot of land left vulnerable to decades of clashes — exposed to grenades, explosives, skunk-water, fires and city pollutants — documented through its slow journey toward restoration through permaculture and healthy gardening.\n\nAs I worked on documenting the land and updating the blog, the project became a meditation on soil, memory, and the quiet resilience of the earth beneath us.'}
+];
+
+function openM(i){
+  const p=projects[i];if(!p)return;
+  document.getElementById('mType').textContent=p.type;
+  document.getElementById('mTitle').textContent=p.title;
+  document.getElementById('mRow').innerHTML=`<span class="mbadge hi">${p.org}</span><span class="mbadge">${p.loc}</span><span class="mbadge">${p.year}</span>`;
+  document.getElementById('mDesc').textContent=p.desc;
+  const media=document.getElementById('mMedia');
+  if(p.yt){media.innerHTML=`<iframe class="myt" src="https://www.youtube.com/embed/${p.yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;}
+  else if(p.img){media.innerHTML=`<img class="mimg" src="${p.img}" alt="${p.title}">`;}
+  const linksEl=document.getElementById('mLinks');
+  linksEl.innerHTML=p.links&&p.links.length?p.links.map(l=>`<a class="mlink" href="${l.url}" target="_blank">${l.label} ↗</a>`).join(''):'';
+  document.getElementById('mWrap').classList.add('open');
+}
+function closeM(){document.getElementById('mMedia').innerHTML='';document.getElementById('mWrap').classList.remove('open');}
+function closeMOut(e){if(e.target===document.getElementById('mWrap'))closeM();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
